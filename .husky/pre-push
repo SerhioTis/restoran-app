@@ -2,5 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx branch-name-lint branch-name-lint.config.json
-npm run format:check
+npm run format:wirte
 npm run test
