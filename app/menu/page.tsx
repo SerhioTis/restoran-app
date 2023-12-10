@@ -1,44 +1,40 @@
-import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
-import { getAllProductsTypes } from 'actions/products';
-import { Input } from 'components/ui/input';
+import { getProductsByType } from 'actions/products';
 import { PRODUCTS_TYPE } from 'types/products';
+import { menuTypesList } from 'utils/menu';
+
+import { NavBar } from './NavBar';
+import { ProductList } from './ProductList';
+import { groupProductListBySuptype } from './helpers';
 
 interface PageProps {
   searchParams: {
-    type: string;
+    type: PRODUCTS_TYPE;
   };
 }
 
 export default async function Page({ searchParams }: PageProps) {
-  const menuTypes = await getAllProductsTypes();
-
-  if (!menuTypes.includes(decodeURI(searchParams.type)))
+  if (!menuTypesList.includes(decodeURI(searchParams.type) as PRODUCTS_TYPE))
     redirect(`/menu?type=${encodeURI(PRODUCTS_TYPE.BREAKFASTS)}`);
 
+  const products = await getProductsByType(searchParams.type);
+
+  const parsedProductList = groupProductListBySuptype(products);
+
+  const productSubTypes = Object.entries(parsedProductList).reduce<
+    Record<string, string[]>
+  >((acc, value) => {
+    const subTypes = [...new Set(value[1].map((value) => value.sub_type))];
+
+    return { ...acc, [value[0]]: subTypes };
+  }, {});
+
   return (
-    <main>
-      <div>
-        <Input type="search" placeholder="search" />
-      </div>
+    <main className="mx-auto flex max-w-3xl">
+      <NavBar productSubTypes={productSubTypes} />
 
-      <div>
-        <h1>SUB_TYPE</h1>
-        <div className="divide-y-2">
-          <article>
-            <div>
-              <h4>ВІВСЯНКА</h4>
-              <div>169 hrn</div>
-              <div>220g</div>
-            </div>
-
-            <div>
-              <Image width={160} height={120} src={''} alt="product img" />
-            </div>
-          </article>
-        </div>
-      </div>
+      <ProductList productList={parsedProductList} />
     </main>
   );
 }

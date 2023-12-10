@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import './globals.css';
-import { Header } from 'components/sheared/Header/indext';
+import { Header } from 'components/sheared/Header';
 
 export const metadata: Metadata = {
   title: 'Create Next App',

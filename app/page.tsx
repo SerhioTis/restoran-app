@@ -4,40 +4,16 @@ import {
   Mail,
   Phone,
   ShoppingBasket,
-  ShoppingCart,
   Twitter,
-  User,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getAllProductsTypes } from 'actions/products';
+import { menuTypesList } from 'utils/menu';
 
 export default async function Home() {
-  const types = await getAllProductsTypes();
-
   return (
     <main className="px-24">
-      {/* <header>
-        <div className="flex justify-between p-10">
-          <div className="flex gap-4">
-            <Link href="/menu">Меню</Link>
-            <Link href="#">Замовлення</Link>
-          </div>
-
-          <div className="flex gap-4">
-            <Link href="#">
-              <ShoppingCart size={24} />
-            </Link>
-
-            <Link href="#">
-              <User size={24} />
-            </Link>
-          </div>
-        </div>
-        <div className="border" />
-      </header> */}
-
       <div className="mt-40 flex items-center justify-between gap-6 pr-16">
         <h1 className="text-5xl font-bold">
           Discover the best restaurants near you
@@ -54,11 +30,11 @@ export default async function Home() {
         <p className="text-center text-3xl font-bold">Категорії</p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-8">
-          {types.map((type) => (
+          {menuTypesList.map((type) => (
             <Link
               key={type}
               className="flex h-48 w-48 items-center justify-center rounded-xl  bg-orange-400"
-              href={'#'}
+              href={`/menu?type=${encodeURI(type)}`}
             >
               <p>{type}</p>
             </Link>
@@ -66,7 +42,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <footer className="mt-10 flex justify-between border-t-2 pb-10 pt-12">
+      <footer className="mt-10 flex justify-between border-t-2 border-gray-500 pb-10 pt-12">
         <div>
           <div className="flex items-center gap-4">
             <ShoppingBasket size={30} className="mt-1" />
@@ -77,9 +53,15 @@ export default async function Home() {
           </p>
 
           <div className="mt-12 flex gap-4">
-            <Instagram />
-            <Facebook />
-            <Twitter />
+            <Link href="#">
+              <Instagram />
+            </Link>
+            <Link href="#">
+              <Facebook />
+            </Link>
+            <Link href="#">
+              <Twitter />
+            </Link>
           </div>
         </div>
 
