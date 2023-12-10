@@ -5,10 +5,9 @@ export enum PRODUCTS_TYPE {
   ALCOHOL = 'АЛКОГОЛЬ',
 }
 
-export type Products = {
+export type Product = {
   id: number;
-  // fix it
-  price: string;
+  price: number;
   title: string;
   weight: string;
   image: string;

@@ -4,15 +4,17 @@ import Link from 'next/link';
 
 export const Header = () => {
   return (
-    <header className="mx-24 flex items-center justify-between border-b-2 py-4">
+    <header className="mx-24 flex items-center justify-between border-b-2 border-gray-500 py-4">
       <div className="flex h-14 gap-5">
-        <Image
-          width={56}
-          height={56}
-          src="/logo.png"
-          alt="logo"
-          className="rounded-full object-cover object-center"
-        />
+        <Link href="/">
+          <Image
+            width={56}
+            height={56}
+            src="/logo.png"
+            alt="logo"
+            className="rounded-full object-cover object-center"
+          />
+        </Link>
 
         <div>
           <h4 className="text-xl font-bold">Food Finder</h4>
