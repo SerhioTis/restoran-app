@@ -2,7 +2,7 @@ import { ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const Header = () => {
+export default function Content() {
   return (
     <header className="mx-24 flex items-center justify-between border-b-2 py-4">
       <div className="flex h-14 gap-5">
@@ -33,4 +33,4 @@ export const Header = () => {
       </div>
     </header>
   );
-};
+}

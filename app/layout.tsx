@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 
 import './globals.css';
-import { Header } from 'components/sheared/Header/indext';
+import { Header } from '@/components/sheared/Header';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,6 +19,8 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+
+        <Toaster />
       </body>
     </html>
   );
