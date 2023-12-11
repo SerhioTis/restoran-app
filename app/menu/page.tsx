@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { getProductsByType } from 'actions/products';
+import { getAllProductsTypes, getProductsByType } from 'actions/products';
 import { PRODUCTS_TYPE } from 'types/products';
 import { menuTypesList } from 'utils/menu';
 
@@ -22,17 +22,27 @@ export default async function Page({ searchParams }: PageProps) {
 
   const parsedProductList = groupProductListBySuptype(products);
 
-  const productSubTypes = Object.entries(parsedProductList).reduce<
-    Record<string, string[]>
-  >((acc, value) => {
-    const subTypes = [...new Set(value[1].map((value) => value.sub_type))];
+  const productSubTypes = await getAllProductsTypes();
 
-    return { ...acc, [value[0]]: subTypes };
-  }, {});
+  const parsedProductSubTypes = menuTypesList.reduce<Record<string, string[]>>(
+    (acc, value) => {
+      return {
+        ...acc,
+        [value]: [
+          ...new Set(
+            productSubTypes
+              .filter((item) => item.type === value)
+              .map((item) => item.sub_type),
+          ),
+        ],
+      };
+    },
+    {},
+  );
 
   return (
     <main className="mx-auto flex max-w-3xl">
-      <NavBar productSubTypes={productSubTypes} />
+      <NavBar productSubTypes={parsedProductSubTypes} />
 
       <ProductList productList={parsedProductList} />
     </main>

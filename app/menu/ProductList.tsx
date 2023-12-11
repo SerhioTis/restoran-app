@@ -31,18 +31,20 @@ export const ProductList = async ({ productList }: ProductListProps) => {
                       >
                         <div>
                           <h4>{product.title}</h4>
-                          <div>{product.price} ₴</div>
-                          <div>{product.weight}</div>
+                          <p>{product.price} ₴</p>
+                          <p>{product.weight}</p>
                         </div>
 
-                        <div>
-                          <Image
-                            width={160}
-                            height={120}
-                            className="rounded"
-                            src={product.image}
-                            alt="product img"
-                          />
+                        <div className="w-40">
+                          {product.image && (
+                            <Image
+                              width={160}
+                              height={128}
+                              className="rounded object-cover"
+                              src={product.image}
+                              alt="product img"
+                            />
+                          )}
                         </div>
                       </article>
                     ))}
