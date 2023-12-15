@@ -6,7 +6,7 @@ import { menuTypesList } from 'utils/menu';
 
 import { NavBar } from './NavBar';
 import { ProductList } from './ProductList';
-import { groupProductListBySuptype } from './helpers';
+import { groupProductListBySubtype } from './helpers';
 
 interface PageProps {
   searchParams: {
@@ -20,11 +20,11 @@ export default async function Page({ searchParams }: PageProps) {
 
   const products = await getProductsByType(searchParams.type);
 
-  const parsedProductList = groupProductListBySuptype(products);
+  const parsedProductList = groupProductListBySubtype(products);
 
   const productSubTypes = await getAllProductsTypes();
 
-  const parsedProductSubTypes = menuTypesList.reduce(
+  const parsedProductSubTypes = menuTypesList.reduce<Record<string, string[]>>(
     (acc, value) => {
       acc[value] = productSubTypes
         .filter((item) => item.type === value)
@@ -32,7 +32,7 @@ export default async function Page({ searchParams }: PageProps) {
 
       return acc;
     },
-    {} as Record<string, string[]>,
+    {},
   );
 
   return (

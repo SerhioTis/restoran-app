@@ -17,8 +17,8 @@ export default function ProductCard({ product }: Props) {
         <p>{product.weight}</p>
       </div>
 
-      <div className="flex flex-col items-end gap-2">
-        <div className="w-40">
+      <div className="flex flex-col gap-2">
+        <div className="relative h-full w-40">
           {product.image && (
             <Image
               width={160}
@@ -28,9 +28,6 @@ export default function ProductCard({ product }: Props) {
               alt="product img"
             />
           )}
-        </div>
-
-        <div>
           <ProductActions product={product} />
         </div>
       </div>

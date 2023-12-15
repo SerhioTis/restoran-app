@@ -4,10 +4,10 @@ import { ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
-import { useProductsStore } from 'stores/useProductsStore';
+import { useBusketsStore } from 'stores/useBusketsStore';
 
 export default function Orders() {
-  const countOfOrders = useProductsStore((item) => item.busket.length);
+  const countOfOrders = useBusketsStore((item) => item.busket.length);
 
   return (
     <Link href="/busket">

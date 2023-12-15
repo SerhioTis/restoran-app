@@ -9,16 +9,16 @@ import AlertDialog from '@/components/sheared/AlertDialog';
 import ProductCard from '@/components/sheared/ProductCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
-import { useProductsStore } from 'stores/useProductsStore';
+import { useBusketsStore } from 'stores/useBusketsStore';
 
 export default function Busket() {
   const { data: session, status } = useSession();
-  const busket = useProductsStore((state) => state.busket);
+  const busket = useBusketsStore((state) => state.busket);
 
-  const totalCost = useProductsStore((state) =>
+  const totalCost = useBusketsStore((state) =>
     state.busket.reduce((acc, current) => (acc += current.price), 0),
   );
-  const isEmpty = busket.length < 1;
+  const isEmpty = !busket.length;
   const isAuthorized = status === 'authenticated';
 
   const handleOrder = () => {
@@ -32,10 +32,10 @@ export default function Busket() {
           <AlertCircle className="h-4 w-4" />
           <AlertTitle>Alert!</AlertTitle>
           <AlertDescription>
-            To create an order, you slould{' '}
+            To create an order, you slould
             <Link href="/sign-in" className="text-[#3399ff] underline">
               sign in
-            </Link>{' '}
+            </Link>
             first
           </AlertDescription>
         </Alert>
@@ -46,7 +46,7 @@ export default function Busket() {
           <div>
             <p>Busket is empty</p>
             <p>
-              Add products to busket{' '}
+              Add products to busket&nbsp;
               <Link
                 href="/menu?type=СНІДАНКИ"
                 className="text-[#3399ff] underline"
@@ -76,7 +76,7 @@ export default function Busket() {
               <div>Total cost: {totalCost} ₴</div>
               <div>Products count: {busket.length}</div>
               <div>
-                Customer email:{' '}
+                Customer email:
                 {isAuthorized
                   ? session?.user?.email
                   : 'You should sign in first'}
