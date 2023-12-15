@@ -15,7 +15,7 @@ export const NavBar = ({ productSubTypes }: NavBarProps) => {
       <ul className="pb-4">
         {productSubtypesList.map((type) => (
           <Fragment key={type}>
-            <li className="pb-2 text-lg [&:not(:first-child)]:pt-5">
+            <li className="space-y-5 pb-2 text-lg">
               <Link href={`/menu?type=${type}`}>{type}</Link>
             </li>
 
