@@ -24,24 +24,19 @@ export default async function Page({ searchParams }: PageProps) {
 
   const productSubTypes = await getAllProductsTypes();
 
-  const parsedProductSubTypes = menuTypesList.reduce<Record<string, string[]>>(
+  const parsedProductSubTypes = menuTypesList.reduce(
     (acc, value) => {
-      return {
-        ...acc,
-        [value]: [
-          ...new Set(
-            productSubTypes
-              .filter((item) => item.type === value)
-              .map((item) => item.sub_type),
-          ),
-        ],
-      };
+      acc[value] = productSubTypes
+        .filter((item) => item.type === value)
+        .map((item) => item.sub_type);
+
+      return acc;
     },
-    {},
+    {} as Record<string, string[]>,
   );
 
   return (
-    <main className="mx-auto flex max-w-3xl">
+    <main className="mx-auto grid max-w-3xl grid-cols-3">
       <NavBar productSubTypes={parsedProductSubTypes} />
 
       <ProductList productList={parsedProductList} />
