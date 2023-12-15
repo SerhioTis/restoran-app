@@ -4,9 +4,9 @@ import { PropsWithChildren } from 'react';
 
 import { getServerSession } from 'next-auth';
 
-import PageLoading from '@/components/sheared/PageLoading';
+import { PageLoading } from '@/components/sheared/PageLoading';
 import { Toaster } from '@/components/ui/toaster';
-import Header from 'components/sheared/Header/index';
+import { Header } from 'components/sheared/Header/index';
 import Providers from 'context/Providers';
 
 import { authOptions } from './api/auth/[...nextauth]/options';
