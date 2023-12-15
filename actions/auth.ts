@@ -1,3 +1,4 @@
+import { User } from '@/types/user';
 import { pool } from 'database';
 
 interface Credential {
@@ -5,9 +6,9 @@ interface Credential {
 }
 
 export const getUserByEmail = async (credentials: Credential) => {
-  const user = await pool.query('SELECT * FROM users WHERE email = $1', [
+  const user = await pool.query<User>('SELECT * FROM users WHERE email = $1', [
     credentials.email,
   ]);
 
-  return user;
+  return user?.rows?.[0] ?? null;
 };

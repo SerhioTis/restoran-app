@@ -35,9 +35,9 @@ const authOptions: NextAuthOptions = {
         }
 
         const user = await getUserByEmail(credentials);
-        const userPassword = user.rows?.[0]?.password;
+        const userPassword = user.password;
 
-        if (!user.rowCount || !userPassword) {
+        if (!user || !userPassword) {
           return null;
         }
 
@@ -47,7 +47,7 @@ const authOptions: NextAuthOptions = {
           return null;
         }
 
-        return user.rows[0];
+        return user;
       },
     }),
   ],
