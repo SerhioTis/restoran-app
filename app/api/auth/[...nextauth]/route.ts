@@ -1,12 +1,12 @@
 import PostgresAdapter from '@auth/pg-adapter';
 import bcrypt from 'bcrypt';
-import NextAuth, { AuthOptions } from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import CreadentialsProvider from 'next-auth/providers/credentials';
 
 import { getUserByEmail } from '@/actions/auth';
 import { pool } from 'database';
 
-export const authOptions: AuthOptions = {
+const authOptions: NextAuthOptions = {
   adapter: PostgresAdapter(pool),
   session: {
     strategy: 'jwt',

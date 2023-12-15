@@ -4,7 +4,6 @@ import './globals.css';
 import PageLoading from '@/components/sheared/PageLoading';
 import { Toaster } from '@/components/ui/toaster';
 import Header from 'components/sheared/Header/index';
-import Provider from 'context/Provider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,14 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Provider>
-        <body>
-          <Header />
-          {children}
-          <PageLoading />
-          <Toaster />
-        </body>
-      </Provider>
+      <body>
+        <Header />
+        {children}
+        <PageLoading />
+        <Toaster />
+      </body>
     </html>
   );
 }
