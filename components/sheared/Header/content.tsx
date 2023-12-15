@@ -1,12 +1,14 @@
-import { ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const Header = () => {
+import Orders from './Orders';
+import UserDropdown from './UserDropdown';
+
+export default function Content() {
   return (
     <header className="mx-24 flex items-center justify-between border-b-2 border-gray-500 py-4">
       <div className="flex h-14 gap-5">
-        <Link href="/">
+        <Link href="/" className="flex items-center">
           <Image
             width={56}
             height={56}
@@ -24,15 +26,11 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className="flex gap-4">
-        <Link href="#">
-          <ShoppingCart size={24} />
-        </Link>
+      <div className="flex items-center gap-4">
+        <Orders />
 
-        <Link href="#">
-          <User size={24} />
-        </Link>
+        <UserDropdown />
       </div>
     </header>
   );
-};
+}

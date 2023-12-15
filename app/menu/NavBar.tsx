@@ -8,23 +8,14 @@ interface NavBarProps {
 }
 
 export const NavBar = ({ productSubTypes }: NavBarProps) => {
-  // const { search, setSearch } = useSearchProduct();
   const productSubtypesList = Object.keys(productSubTypes);
 
   return (
-    <div className="h-full pt-7">
-      {/* <div className="mx-4 mb-6">
-        <Input
-          type="search"
-          placeholder="Назва страви"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-        />
-      </div> */}
+    <div className="h-full w-[300px] pt-7">
       <ul className="pb-4">
         {productSubtypesList.map((type) => (
           <Fragment key={type}>
-            <li className="pb-4 text-lg">
+            <li className="pb-2 text-lg [&:not(:first-child)]:pt-5">
               <Link href={`/menu?type=${type}`}>{type}</Link>
             </li>
 
