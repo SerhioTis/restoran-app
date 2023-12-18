@@ -14,11 +14,11 @@ import { useBusketsStore } from 'stores/useBusketsStore';
 export default function Busket() {
   const { data: session, status } = useSession();
   const busket = useBusketsStore((state) => state.busket);
-
+  const countOfOrders = busket.length;
   const totalCost = useBusketsStore((state) =>
     state.busket.reduce((acc, current) => (acc += current.price), 0),
   );
-  const isEmpty = !busket.length;
+  const isEmpty = !countOfOrders;
   const isAuthorized = status === 'authenticated';
 
   const handleOrder = () => {
@@ -74,7 +74,7 @@ export default function Busket() {
             <Separator className="my-2" />
             <div className="text-xl">
               <div>Total cost: {totalCost} ₴</div>
-              <div>Products count: {busket.length}</div>
+              <div>Products count: {countOfOrders}</div>
               <div>
                 Customer email:
                 {isAuthorized

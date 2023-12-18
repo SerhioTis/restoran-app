@@ -1,8 +1,10 @@
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Orders from './Orders';
 import UserDropdown from './UserDropdown';
+
+const Orders = dynamic(() => import('./Orders'), { ssr: false });
 
 export default function Content() {
   return (
