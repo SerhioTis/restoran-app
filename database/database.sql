@@ -19,9 +19,35 @@ CREATE TABLE IF NOT EXISTS products  (
   price INTEGER NOT NULL
 );
 
--- CREATE TABLE IF NOT EXISTS user_session  (
---   id SERIAL PRIMARY KEY,
---   access_token TEXT NOT NULL,
---   created_at TIMESTAMP DEFAULT NOW()::TIMESTAMP,
---   user_id INTEGER
--- );
+CREATE OR REPLACE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updatedAt = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    userId INT NOT NULL,
+    comment TEXT,
+    status VARCHAR(50),
+    totalCost INT,
+    totalProducts INT,
+    createdAt TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+
+    FOREIGN KEY (userId) REFERENCES users(id)
+);
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON orders
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+
+CREATE TABLE order_products (
+    orderId INT,
+    productId INT,
+    PRIMARY KEY (orderId, productId),
+    FOREIGN KEY (orderId) REFERENCES orders(id),
+    FOREIGN KEY (productId) REFERENCES products(id)
+);
