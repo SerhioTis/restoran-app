@@ -33,7 +33,6 @@ export default function UserDropdown() {
 
   const handleAuth = () => {
     if (isAuthorized) {
-      console.log('signout');
       signOut();
       return;
     }
