@@ -18,11 +18,12 @@ export default async function Page({ searchParams }: PageProps) {
   if (!menuTypesList.includes(decodeURI(searchParams.type) as PRODUCTS_TYPE))
     redirect(`/menu?type=${encodeURI(PRODUCTS_TYPE.BREAKFASTS)}`);
 
-  const products = await getProductsByType(searchParams.type);
+  const [products, productSubTypes] = await Promise.all([
+    getProductsByType(searchParams.type),
+    getAllProductsTypes(),
+  ]);
 
   const parsedProductList = groupProductListBySubtype(products);
-
-  const productSubTypes = await getAllProductsTypes();
 
   const parsedProductSubTypes = menuTypesList.reduce<Record<string, string[]>>(
     (acc, value) => {
