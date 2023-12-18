@@ -33,7 +33,6 @@ export const getUserOrders = async (userId?: string) => {
   const ordersRes = await pool.query<Order>(GET_USER_ORDERS_WITH_PRODUCTS, [
     userId,
   ]);
-  console.log('ordersRes', ordersRes);
 
   const ordersData = ordersRes.rows;
   return ordersData;
