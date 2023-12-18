@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 
-interface Props {
+interface AlertProps {
   onConfirm: () => void;
   triggerText: string;
   titleText: string;
@@ -21,13 +21,13 @@ interface Props {
   triggerDisabled?: boolean;
 }
 
-export default function Alert({
+export const Alert = ({
   onConfirm,
   descriptionText,
   titleText,
   triggerText,
   triggerDisabled,
-}: Props) {
+}: AlertProps) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -47,4 +47,4 @@ export default function Alert({
       </AlertDialogContent>
     </AlertDialog>
   );
-}
+};

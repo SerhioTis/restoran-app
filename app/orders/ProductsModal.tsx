@@ -1,6 +1,6 @@
 'use client';
 
-import ProductCard from '@/components/sheared/ProductCard';
+import { ProductCard } from '@/components/sheared/ProductCard';
 import {
   Dialog,
   DialogContent,

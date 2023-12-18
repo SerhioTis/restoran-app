@@ -3,11 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Product } from '@/types/products';
 import { useBusketsStore } from 'stores/useBusketsStore';
 
-interface Props {
+interface ProductActionsProps {
   product: Product;
 }
 
-export default function ProductActions({ product }: Props) {
+export const ProductActions = ({ product }: ProductActionsProps) => {
   const addToBusket = useBusketsStore((state) => state.addToBusket);
 
   return (
@@ -15,4 +15,4 @@ export default function ProductActions({ product }: Props) {
       <Button onClick={() => addToBusket(product)}>Order</Button>
     </div>
   );
-}
+};

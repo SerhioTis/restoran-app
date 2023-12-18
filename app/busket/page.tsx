@@ -5,8 +5,8 @@ import { AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 
-import AlertDialog from '@/components/sheared/AlertDialog';
-import ProductCard from '@/components/sheared/ProductCard';
+import { AlertDialog } from '@/components/sheared/Alert';
+import { ProductCard } from '@/components/sheared/ProductCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 import { useBusketsStore } from 'stores/useBusketsStore';

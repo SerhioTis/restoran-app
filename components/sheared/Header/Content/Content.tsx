@@ -2,11 +2,11 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import UserDropdown from './UserDropdown';
+import { UserDropdown } from '../UserDropdown';
 
-const Orders = dynamic(() => import('./Orders'), { ssr: false });
+const Orders = dynamic(() => import('../Orders'), { ssr: false });
 
-export default function Content() {
+export const Content = () => {
   return (
     <header className="mx-24 flex items-center justify-between border-b-2 border-gray-500 py-4">
       <div className="flex h-14 gap-5">
@@ -35,4 +35,4 @@ export default function Content() {
       </div>
     </header>
   );
-}
+};
