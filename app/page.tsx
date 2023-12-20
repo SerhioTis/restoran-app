@@ -9,7 +9,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { menuTypesList } from 'utils/menu';
+import { menuTypesList } from '@/utils/menu';
 
 export default async function Home() {
   return (

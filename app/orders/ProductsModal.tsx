@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { useOrderStore } from 'stores/useOrderStore';
+import { useOrderStore } from '@/stores/useOrderStore';
 
 export function ProductModal() {
   const isProductsModalOpen = useOrderStore(
@@ -30,7 +30,7 @@ export function ProductModal() {
             Here you can see list of products that is in this order
           </DialogDescription>
         </DialogHeader>
-        <div className="">
+        <div>
           {currentModalProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

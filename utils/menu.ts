@@ -1,4 +1,4 @@
-import { PRODUCTS_TYPE } from 'types/products';
+import { PRODUCTS_TYPE } from '@/types/products';
 
 export const menuTypesList = [
   PRODUCTS_TYPE.BREAKFASTS,
