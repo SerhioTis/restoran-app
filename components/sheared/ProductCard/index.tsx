@@ -6,9 +6,10 @@ import ProductActions from './productActions';
 
 interface Props {
   product: Product;
+  disableInteraction?: boolean;
 }
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ product, disableInteraction }: Props) {
   return (
     <article className="flex justify-between" key={product.id}>
       <div>
@@ -28,7 +29,7 @@ export default function ProductCard({ product }: Props) {
               alt="product img"
             />
           )}
-          <ProductActions product={product} />
+          {!disableInteraction && <ProductActions product={product} />}
         </div>
       </div>
     </article>

@@ -3,17 +3,24 @@ import { Fragment } from 'react';
 
 import { AlertCircle } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
+import { createOrderWithProducts } from '@/actions/orders';
 import AlertDialog from '@/components/sheared/AlertDialog';
 import ProductCard from '@/components/sheared/ProductCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
+import { toast } from '@/components/ui/use-toast';
 import { useBusketsStore } from 'stores/useBusketsStore';
+import { usePageLoadingStore } from 'stores/usePageLoadingStore';
 
 export default function Busket() {
   const { data: session, status } = useSession();
+  const setIsLoading = usePageLoadingStore((state) => state.setLoading);
   const busket = useBusketsStore((state) => state.busket);
+  const clearBusket = useBusketsStore((state) => state.clearBusket);
+  const router = useRouter();
 
   const totalCost = useBusketsStore((state) =>
     state.busket.reduce((acc, current) => (acc += current.price), 0),
@@ -21,8 +28,32 @@ export default function Busket() {
   const isEmpty = !busket.length;
   const isAuthorized = status === 'authenticated';
 
-  const handleOrder = () => {
-    console.log('order', busket);
+  const handleOrder = async () => {
+    try {
+      setIsLoading(true);
+      if (!busket?.length || !session?.user?.id) return;
+
+      const productIds = busket.map((item) => item.id);
+      await createOrderWithProducts(
+        {
+          status: 'processing',
+          totalCost,
+          totalProducts: productIds.length,
+          userId: session.user.id,
+          comment: '',
+        },
+        productIds,
+      );
+      clearBusket();
+      router.push('/orders');
+    } catch {
+      toast({
+        description: 'Something went wrong',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
