@@ -1,5 +1,5 @@
-import ProductCard from '@/components/sheared/ProductCard';
-import { Product } from 'types/products';
+import { ProductCard } from '@/components/sheared/ProductCard';
+import { Product } from '@/types/products';
 
 interface ProductListProps {
   productList: Record<string, Product[]>;

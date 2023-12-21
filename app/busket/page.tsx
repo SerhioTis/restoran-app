@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 import { createOrderWithProducts } from '@/actions/orders';
-import AlertDialog from '@/components/sheared/AlertDialog';
-import ProductCard from '@/components/sheared/ProductCard';
+import { AlertDialog } from '@/components/sheared/Alert';
+import { ProductCard } from '@/components/sheared/ProductCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 import { toast } from '@/components/ui/use-toast';
@@ -22,10 +22,11 @@ export default function Busket() {
   const clearBusket = useBusketsStore((state) => state.clearBusket);
   const router = useRouter();
 
+  const countOfOrders = busket.length;
   const totalCost = useBusketsStore((state) =>
     state.busket.reduce((acc, current) => (acc += current.price), 0),
   );
-  const isEmpty = !busket.length;
+  const isEmpty = !countOfOrders;
   const isAuthorized = status === 'authenticated';
 
   const handleOrder = async () => {
@@ -105,7 +106,7 @@ export default function Busket() {
             <Separator className="my-2" />
             <div className="text-xl">
               <div>Total cost: {totalCost} ₴</div>
-              <div>Products count: {busket.length}</div>
+              <div>Products count: {countOfOrders}</div>
               <div>
                 Customer email:
                 {isAuthorized

@@ -1,6 +1,6 @@
 'use client';
 
-import ProductCard from '@/components/sheared/ProductCard';
+import { ProductCard } from '@/components/sheared/ProductCard';
 import {
   Dialog,
   DialogContent,
@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { useOrderStore } from 'stores/useOrderStore';
+import { useOrderStore } from '@/stores/useOrderStore';
 
 export function ProductModal() {
   const isProductsModalOpen = useOrderStore(
