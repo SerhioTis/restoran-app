@@ -2,6 +2,7 @@
 
 import { MoreHorizontal } from 'lucide-react';
 
+import { declineOrder } from '@/actions/orders';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -18,9 +19,10 @@ interface Props {
   // TODO: change type after roles feature
   role: 'customer';
   products: Product[];
+  orderId: string;
 }
 
-export default function ActionCell({ role, products }: Props) {
+export default function ActionCell({ role, products, orderId }: Props) {
   const setIsProductsModalOpen = useOrderStore(
     (state) => state.setIsProductsModalOpen,
   );
@@ -32,6 +34,10 @@ export default function ActionCell({ role, products }: Props) {
   const handleViewProducts = () => {
     setCurrentModalProducts(products);
     setIsProductsModalOpen(true);
+  };
+
+  const handleDeclineOrder = () => {
+    declineOrder(orderId);
   };
 
   return (
@@ -51,7 +57,7 @@ export default function ActionCell({ role, products }: Props) {
                 View products
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleDeclineOrder()}>
                 <span className="text-destructive">Decline</span>
               </DropdownMenuItem>
             </>

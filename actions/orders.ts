@@ -1,3 +1,5 @@
+'use server';
+
 import { Order } from '@/types/order';
 import { pool } from 'database';
 
@@ -15,7 +17,12 @@ export const getUserOrders = async (userId?: string) => {
       array_agg(
           json_build_object(
             'id', products.id,
-            'title', products.title
+            'title', products.title,
+            'description', products.description,
+            'weight', products.weight,
+            'image', products.image,
+            'type', products.type,
+            'price', products.price 
           )
       ) AS products
     FROM
@@ -39,8 +46,11 @@ export const getUserOrders = async (userId?: string) => {
 };
 
 export async function createOrderWithProducts(
-  order: Order,
-  productIds: string[],
+  order: Pick<
+    Order,
+    'status' | 'totalCost' | 'totalProducts' | 'userId' | 'comment'
+  >,
+  productIds: number[],
 ) {
   const client = await pool.connect();
   const { status, totalCost, totalProducts, userId, comment } = order;
@@ -77,3 +87,9 @@ export async function createOrderWithProducts(
     client.release();
   }
 }
+
+export const declineOrder = async (orderId: string) => {
+  const CHANGE_ORDER_STATUS =
+    "UPDATE orders SET status = 'declined' WHERE id = $1";
+  await pool.query(CHANGE_ORDER_STATUS, [orderId]);
+};

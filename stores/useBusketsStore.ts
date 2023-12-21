@@ -7,6 +7,7 @@ interface ProductStore {
   busket: Product[];
   addToBusket: (product: Product) => void;
   removeFromBusket: (id: number) => void;
+  clearBusket: () => void;
 }
 
 export const useBusketsStore = create<ProductStore>()(
@@ -19,6 +20,7 @@ export const useBusketsStore = create<ProductStore>()(
         const filteredBusket = get().busket.filter((item) => item.id !== id);
         set({ busket: filteredBusket });
       },
+      clearBusket: () => set(() => ({ busket: [] })),
     }),
     {
       name: 'busket',

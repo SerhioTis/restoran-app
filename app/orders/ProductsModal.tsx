@@ -30,9 +30,13 @@ export function ProductModal() {
             Here you can see list of products that is in this order
           </DialogDescription>
         </DialogHeader>
-        <div>
+        <div className="flex flex-col gap-8">
           {currentModalProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              disableInteraction
+            />
           ))}
         </div>
       </DialogContent>

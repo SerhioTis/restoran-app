@@ -48,7 +48,13 @@ export const columns: ColumnDef<Order>[] = [
     id: 'actions',
     enableHiding: false,
     cell: ({ row }) => {
-      return <ActionCell role="customer" products={row.original.products} />;
+      return (
+        <ActionCell
+          role="customer"
+          products={row.original.products}
+          orderId={row.original.id}
+        />
+      );
     },
   },
 ];

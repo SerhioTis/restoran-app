@@ -10,6 +10,6 @@ export type Order = {
   totalCost: number;
   totalProducts: number;
   comment: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 };
