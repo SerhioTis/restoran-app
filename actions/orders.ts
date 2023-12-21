@@ -46,7 +46,10 @@ export const getUserOrders = async (userId?: string) => {
 };
 
 export async function createOrderWithProducts(
-  order: Partial<Order>,
+  order: Pick<
+    Order,
+    'status' | 'totalCost' | 'totalProducts' | 'userId' | 'comment'
+  >,
   productIds: number[],
 ) {
   const client = await pool.connect();
