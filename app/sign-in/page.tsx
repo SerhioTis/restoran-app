@@ -8,7 +8,7 @@ import { signIn } from 'next-auth/react';
 
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
-import { usePageLoadingStore } from 'stores/usePageLoadingStore';
+import { usePageLoadingStore } from '@/stores/usePageLoadingStore';
 
 export default function Page() {
   const router = useRouter();

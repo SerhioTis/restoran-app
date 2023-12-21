@@ -19,8 +19,11 @@
       "@/actions/*": ["actions/*"],
       "@/app/*": ["app/*"],
       "@/components/*": ["components/*"],
+      "@/context/*": ["context/*"],
       "@/lib/*": ["lib/*"],
-      "@/types/*": ["types/*"]
+      "@/stores/*": ["stores/*"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"]
     },
     "plugins": [
       {
