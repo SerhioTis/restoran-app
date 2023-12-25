@@ -1,5 +1,4 @@
 'use client';
-import { Fragment } from 'react';
 
 import Link from 'next/link';
 
@@ -11,22 +10,20 @@ export const NavBar = ({ productSubTypes }: NavBarProps) => {
   const productSubtypesList = Object.keys(productSubTypes);
 
   return (
-    <div className="h-full w-[300px] pt-7">
-      <ul className="pb-4">
+    <div className="h-full pt-7">
+      <ul className="space-y-2 pb-4">
         {productSubtypesList.map((type) => (
-          <Fragment key={type}>
-            <li className="space-y-5 pb-2 text-lg">
-              <Link href={`/menu?type=${type}`}>{type}</Link>
-            </li>
+          <li key={type}>
+            <Link className="pb-2 text-lg" href={`/menu?type=${type}`}>
+              {type}
+            </Link>
 
-            <li className="pl-2">
-              <ul>
-                {productSubTypes[type].map((subType) => (
-                  <li key={subType}>{subType}</li>
-                ))}
-              </ul>
-            </li>
-          </Fragment>
+            <ul className="pl-2">
+              {productSubTypes[type].map((subType) => (
+                <li key={subType}>{subType}</li>
+              ))}
+            </ul>
+          </li>
         ))}
       </ul>
     </div>

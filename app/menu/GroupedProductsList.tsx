@@ -5,9 +5,7 @@ interface ProductListProps {
   productList: Record<string, Product[]>;
 }
 
-export const GroupedProductsList = async ({
-  productList,
-}: ProductListProps) => {
+export const GroupedProductsList = ({ productList }: ProductListProps) => {
   const productSubtypesList = Object.keys(productList);
 
   return (
@@ -18,15 +16,11 @@ export const GroupedProductsList = async ({
 
           return (
             <div key={productSubtype}>
-              {products.length > 0 && (
-                <>
-                  <h1 className="pb-10 pt-5 text-3xl font-bold">
-                    {productSubtype}
-                  </h1>
+              <h1 className="pb-10 pt-5 text-3xl font-bold">
+                {productSubtype}
+              </h1>
 
-                  <ProductList products={products} />
-                </>
-              )}
+              <ProductList products={products} />
             </div>
           );
         })}
