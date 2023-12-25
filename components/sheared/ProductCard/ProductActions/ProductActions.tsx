@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
+import { useBusketsStore } from '@/stores/useBusketsStore';
 import { Product } from '@/types/products';
-import { useBusketsStore } from 'stores/useBusketsStore';
 
 interface ProductActionsProps {
   product: Product;

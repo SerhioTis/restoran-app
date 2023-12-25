@@ -16,14 +16,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/actions/*": ["actions/*"],
-      "@/app/*": ["app/*"],
-      "@/components/*": ["components/*"],
-      "@/context/*": ["context/*"],
-      "@/lib/*": ["lib/*"],
-      "@/stores/*": ["stores/*"],
-      "@/types/*": ["types/*"],
-      "@/utils/*": ["utils/*"]
+      "@/*": ["./*"]
     },
     "plugins": [
       {

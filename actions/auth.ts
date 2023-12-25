@@ -1,5 +1,5 @@
+import { pool } from '@/database';
 import { User } from '@/types/user';
-import { pool } from 'database';
 
 interface Credential {
   email: string;

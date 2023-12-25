@@ -1,7 +1,7 @@
 'use server';
 
+import { pool } from '@/database';
 import { Order } from '@/types/order';
-import { pool } from 'database';
 
 export const getUserOrders = async (userId?: string) => {
   if (!userId) return [];

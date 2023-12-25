@@ -12,8 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useOrderStore } from '@/stores/useOrderStore';
 import { Product } from '@/types/products';
-import { useOrderStore } from 'stores/useOrderStore';
 
 interface Props {
   // TODO: change type after roles feature

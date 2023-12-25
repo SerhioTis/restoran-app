@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { NextResponse } from 'next/server';
 
-import { pool } from 'database';
+import { pool } from '@/database';
 
 export async function POST(request: Request) {
   const body = await request.json();

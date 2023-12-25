@@ -4,7 +4,7 @@ import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { getUserByEmail } from '@/actions/auth';
-import { pool } from 'database';
+import { pool } from '@/database';
 
 export const authOptions: NextAuthOptions = {
   adapter: PostgresAdapter(pool),
