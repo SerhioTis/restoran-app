@@ -1,6 +1,6 @@
 'use server';
+import { pool } from '@/database';
 import { PRODUCTS_TYPE, Product } from '@/types/products';
-import { pool } from 'database';
 
 export const getProducts = async () => {
   const data = await pool.query('SELECT * FROM PRODUCTS');

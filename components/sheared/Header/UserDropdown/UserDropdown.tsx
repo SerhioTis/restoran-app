@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { usePageLoadingStore } from 'stores/usePageLoadingStore';
+import { usePageLoadingStore } from '@/stores/usePageLoadingStore';
 
 export const UserDropdown = () => {
   const { data: session, status } = useSession();

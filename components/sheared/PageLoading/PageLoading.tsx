@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { usePageLoadingStore } from 'stores/usePageLoadingStore';
+import { usePageLoadingStore } from '@/stores/usePageLoadingStore';
 
 export const PageLoading = () => {
   const isLoading = usePageLoadingStore((state) => state.isLoading);

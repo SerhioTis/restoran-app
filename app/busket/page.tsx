@@ -12,22 +12,23 @@ import { ProductCard } from '@/components/sheared/ProductCard';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 import { toast } from '@/components/ui/use-toast';
-import { useBusketsStore } from 'stores/useBusketsStore';
-import { usePageLoadingStore } from 'stores/usePageLoadingStore';
+import { useBusketsStore } from '@/stores/useBusketsStore';
+import { usePageLoadingStore } from '@/stores/usePageLoadingStore';
 
 export default function Busket() {
   const { data: session, status } = useSession();
+  const isAuthorized = status === 'authenticated';
+
+  const router = useRouter();
+
   const setIsLoading = usePageLoadingStore((state) => state.setLoading);
   const busket = useBusketsStore((state) => state.busket);
   const clearBusket = useBusketsStore((state) => state.clearBusket);
-  const router = useRouter();
-
-  const countOfOrders = busket.length;
   const totalCost = useBusketsStore((state) =>
     state.busket.reduce((acc, current) => (acc += current.price), 0),
   );
+  const countOfOrders = busket.length;
   const isEmpty = !countOfOrders;
-  const isAuthorized = status === 'authenticated';
 
   const handleOrder = async () => {
     try {

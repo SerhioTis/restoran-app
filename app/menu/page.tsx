@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation';
 
-import { getAllProductsTypes, getProductsByType } from 'actions/products';
-import { PRODUCTS_TYPE } from 'types/products';
-import { menuTypesList } from 'utils/menu';
+import { getAllProductsTypes, getProductsByType } from '@/actions/products';
+import { PRODUCTS_TYPE } from '@/types/products';
+import { menuTypesList } from '@/utils/menu';
 
 import { NavBar } from './NavBar';
 import { ProductList } from './ProductList';

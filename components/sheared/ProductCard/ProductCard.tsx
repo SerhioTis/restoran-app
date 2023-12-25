@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { Product } from '@/types/products';
 
-import { ProductActions } from './ProductActions/ProductActions';
+import { ProductActions } from './ProductActions';
 
 interface ProductCardProps {
   product: Product;
