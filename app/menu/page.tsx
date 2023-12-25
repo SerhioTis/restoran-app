@@ -4,9 +4,12 @@ import { getAllProductsTypes, getProductsByType } from '@/actions/products';
 import { PRODUCTS_TYPE } from '@/types/products';
 import { menuTypesList } from '@/utils/menu';
 
+import { GroupedProductsList } from './GroupedProductsList';
 import { NavBar } from './NavBar';
-import { ProductList } from './ProductList';
-import { groupProductListBySubtype } from './helpers';
+import {
+  groupProductListBySubtype,
+  groupProductSubtypesListByType,
+} from './helpers';
 
 interface PageProps {
   searchParams: {
@@ -24,23 +27,13 @@ export default async function Page({ searchParams }: PageProps) {
   ]);
 
   const parsedProductList = groupProductListBySubtype(products);
-
-  const parsedProductSubTypes = menuTypesList.reduce<Record<string, string[]>>(
-    (acc, value) => {
-      acc[value] = productSubTypes
-        .filter((item) => item.type === value)
-        .map((item) => item.sub_type);
-
-      return acc;
-    },
-    {},
-  );
+  const parsedProductSubTypes = groupProductSubtypesListByType(productSubTypes);
 
   return (
     <main className="mx-auto grid max-w-3xl grid-cols-3">
       <NavBar productSubTypes={parsedProductSubTypes} />
 
-      <ProductList productList={parsedProductList} />
+      <GroupedProductsList productList={parsedProductList} />
     </main>
   );
 }

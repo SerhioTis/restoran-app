@@ -1,12 +1,21 @@
-import { Product } from '@/types/products';
+import { PRODUCTS_TYPE, Product } from '@/types/products';
+import { groupBy } from '@/utils/groupBy';
+import { menuTypesList } from '@/utils/menu';
 
 export const groupProductListBySubtype = (products: Product[]) => {
-  return products.reduce<Record<string, Product[]>>((acc, product) => {
-    if (!acc[product.sub_type]) {
-      acc[product.sub_type] = [];
-    }
+  return groupBy(products, (product) => product.sub_type);
+};
 
-    acc[product.sub_type].push(product);
+export const groupProductSubtypesListByType = (
+  productSubTypes: {
+    type: PRODUCTS_TYPE;
+    sub_type: string;
+  }[],
+) => {
+  return menuTypesList.reduce<Record<string, string[]>>((acc, value) => {
+    acc[value] = productSubTypes
+      .filter((item) => item.type === value)
+      .map((item) => item.sub_type);
 
     return acc;
   }, {});
