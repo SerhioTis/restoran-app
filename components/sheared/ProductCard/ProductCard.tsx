@@ -14,7 +14,10 @@ export const ProductCard = ({
   disableInteraction,
 }: ProductCardProps) => {
   return (
-    <article className="flex justify-between" key={product.id}>
+    <article
+      className="flex justify-between py-4 first:pt-0 last:pb-0"
+      key={product.id}
+    >
       <div>
         <h4>{product.title}</h4>
         <p>{product.price} ₴</p>

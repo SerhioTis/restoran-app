@@ -1,11 +1,13 @@
-import { ProductCard } from '@/components/sheared/ProductCard';
+import { ProductList } from '@/components/sheared/ProductList/ProductList';
 import { Product } from '@/types/products';
 
 interface ProductListProps {
   productList: Record<string, Product[]>;
 }
 
-export const ProductList = async ({ productList }: ProductListProps) => {
+export const GroupedProductsList = async ({
+  productList,
+}: ProductListProps) => {
   const productSubtypesList = Object.keys(productList);
 
   return (
@@ -22,11 +24,7 @@ export const ProductList = async ({ productList }: ProductListProps) => {
                     {productSubtype}
                   </h1>
 
-                  <div className="flex flex-col gap-6 divide-y-2">
-                    {products.map((product) => (
-                      <ProductCard key={product.id} product={product} />
-                    ))}
-                  </div>
+                  <ProductList products={products} />
                 </>
               )}
             </div>

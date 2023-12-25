@@ -4,8 +4,8 @@ import { getAllProductsTypes, getProductsByType } from '@/actions/products';
 import { PRODUCTS_TYPE } from '@/types/products';
 import { menuTypesList } from '@/utils/menu';
 
+import { GroupedProductsList } from './GroupedProductsList';
 import { NavBar } from './NavBar';
-import { ProductList } from './ProductList';
 import { groupProductListBySubtype } from './helpers';
 
 interface PageProps {
@@ -40,7 +40,7 @@ export default async function Page({ searchParams }: PageProps) {
     <main className="mx-auto grid max-w-3xl grid-cols-3">
       <NavBar productSubTypes={parsedProductSubTypes} />
 
-      <ProductList productList={parsedProductList} />
+      <GroupedProductsList productList={parsedProductList} />
     </main>
   );
 }
