@@ -27,6 +27,7 @@ module.exports = {
     'unicorn/no-abusive-eslint-disable': 'off',
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/explicit-length-check': 'off',
+    'unicorn/prefer-query-selector': 'off',
     'tailwindcss/no-custom-classname': 0,
     'import/newline-after-import': [
       'error',

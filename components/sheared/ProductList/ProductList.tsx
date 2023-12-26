@@ -10,7 +10,7 @@ export const ProductList = ({ products }: ProductListProps) => {
   return (
     <div className="divide-y">
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} showActions product={product} />
       ))}
     </div>
   );

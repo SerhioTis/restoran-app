@@ -32,11 +32,7 @@ export function ProductModal() {
         </DialogHeader>
         <div className="flex flex-col gap-8">
           {currentModalProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              disableInteraction
-            />
+            <ProductCard key={product.id} product={product} showActions />
           ))}
         </div>
       </DialogContent>

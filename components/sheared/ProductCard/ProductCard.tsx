@@ -1,18 +1,18 @@
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
 import { Product } from '@/types/products';
 
-import { ProductActions } from './ProductActions';
+const ProductActions = dynamic(() => import('./ProductActions'), {
+  ssr: false,
+});
 
 interface ProductCardProps {
   product: Product;
-  disableInteraction?: boolean;
+  showActions?: boolean;
 }
 
-export const ProductCard = ({
-  product,
-  disableInteraction,
-}: ProductCardProps) => {
+export const ProductCard = ({ product, showActions }: ProductCardProps) => {
   return (
     <article
       className="flex justify-between py-4 first:pt-0 last:pb-0"
@@ -22,6 +22,7 @@ export const ProductCard = ({
         <h4>{product.title}</h4>
         <p>{product.price} ₴</p>
         <p>{product.weight}</p>
+        <p>{product.description}</p>
       </div>
 
       <div className="flex flex-col gap-2">
@@ -32,10 +33,10 @@ export const ProductCard = ({
               height={128}
               className="rounded object-cover"
               src={product.image}
-              alt="product img"
+              alt={product.title}
             />
           )}
-          {disableInteraction && <ProductActions product={product} />}
+          {showActions && <ProductActions product={product} />}
         </div>
       </div>
     </article>

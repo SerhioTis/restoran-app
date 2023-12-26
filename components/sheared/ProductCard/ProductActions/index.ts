@@ -1,1 +1,1 @@
-export { ProductActions } from './ProductActions';
+export { ProductActions as default } from './ProductActions';
