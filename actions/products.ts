@@ -18,7 +18,7 @@ export const getProductsByType = async (type: PRODUCTS_TYPE) => {
 
 export const getAllProductsTypes = async () => {
   const data = await pool.query<{ type: PRODUCTS_TYPE; sub_type: string }>(
-    'SELECT DISTINCT sub_type, type  FROM products',
+    'SELECT DISTINCT sub_type, type  FROM products ORDER BY type',
   );
 
   return data.rows;

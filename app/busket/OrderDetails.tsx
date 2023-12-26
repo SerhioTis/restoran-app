@@ -40,7 +40,9 @@ export const OrderDetails = () => {
       );
       clearBusket();
       router.push('/orders');
-    } catch {
+    } catch (error) {
+      console.log(error);
+
       toast({
         description: 'Something went wrong',
         variant: 'destructive',
