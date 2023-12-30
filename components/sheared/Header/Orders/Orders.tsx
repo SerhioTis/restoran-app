@@ -11,7 +11,7 @@ export const Orders = () => {
 
   return (
     <Link href="/busket">
-      <Badge variant="default">
+      <Badge variant="destructive">
         {countOfOrders}
         <ShoppingCart size={24} />
       </Badge>

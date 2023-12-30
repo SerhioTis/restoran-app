@@ -51,6 +51,7 @@ export const OrderDetails = () => {
       setIsLoading(false);
     }
   };
+
   return (
     <div className="divide-y">
       <h2 className="pb-2 text-3xl font-bold">Order Details</h2>
@@ -66,9 +67,9 @@ export const OrderDetails = () => {
 
       <div className="pt-2">
         <AlertDialog
-          descriptionText="We will create an order of products that currently in busket"
-          titleText="Are you sure?"
-          triggerText="Create an order"
+          descriptionText="Ми створимо замовлення на продукти, які зараз у корзині."
+          titleText="Ви впевнені?"
+          triggerText="Створити замовлення"
           onConfirm={handleOrder}
           triggerDisabled={!isAuthorized}
         />

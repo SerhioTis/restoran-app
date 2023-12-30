@@ -31,7 +31,11 @@ export const Alert = ({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button className="w-full" disabled={triggerDisabled}>
+        <Button
+          variant="destructive"
+          className="w-full"
+          disabled={triggerDisabled}
+        >
           {triggerText}
         </Button>
       </AlertDialogTrigger>

@@ -21,16 +21,26 @@ export const ProductActions = ({ product }: ProductActionsProps) => {
     <div className="absolute inset-0 flex items-center justify-center">
       {productCountInBusket ? (
         <div className="flex items-center gap-1">
-          <Button size="sm" onClick={() => addToBusket(product)}>
+          <Button
+            variant="destructive"
+            size="sm"
+            onClick={() => addToBusket(product)}
+          >
             +
           </Button>
-          <Button size="sm" onClick={() => removeFromBusket(product.id)}>
+          <Button
+            variant="destructive"
+            size="sm"
+            onClick={() => removeFromBusket(product.id)}
+          >
             -
           </Button>
-          <span>{productCountInBusket}</span>
+          <span className="font-bold">{productCountInBusket}</span>
         </div>
       ) : (
-        <Button onClick={() => addToBusket(product)}>Order</Button>
+        <Button variant="destructive" onClick={() => addToBusket(product)}>
+          Order
+        </Button>
       )}
     </div>
   );

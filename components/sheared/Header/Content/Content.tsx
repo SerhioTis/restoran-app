@@ -12,18 +12,18 @@ export const Content = () => {
       <div className="flex h-14 gap-5">
         <Link href="/" className="flex items-center">
           <Image
-            width={56}
-            height={56}
+            width={498}
+            height={83}
             src="/logo.png"
             alt="logo"
-            className="rounded-full object-cover object-center"
+            className="h-full w-auto object-cover object-center"
           />
         </Link>
 
         <div>
-          <h4 className="text-xl font-bold">Food Finder</h4>
+          <h4 className="text-xl font-bold">WINETIME</h4>
           <p className="font-semibold opacity-90">
-            Дніпро вул. Казимира Малевича, 86Н
+            Черкаси вул. Михайла Грушевського, 110
           </p>
         </div>
       </div>

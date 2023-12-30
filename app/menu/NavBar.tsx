@@ -23,7 +23,7 @@ export const NavBar = ({ productSubTypes }: NavBarProps) => {
         {productSubtypesList.map((type) => (
           <li key={type}>
             <Link
-              className="pb-2 text-lg font-bold hover:text-purple-500"
+              className="pb-2 text-lg font-bold hover:text-orange-500"
               href={`/menu?type=${type}`}
             >
               {type}
@@ -40,9 +40,9 @@ export const NavBar = ({ productSubTypes }: NavBarProps) => {
                         ?.scrollIntoView({ behavior: 'smooth' })
                     }
                     className={cn('font-semibold rounded-2xl px-4 py-2', {
-                      'bg-purple-800 text-white':
+                      'bg-orange-400 text-white':
                         subType === intersectedSubtype,
-                      'hover:bg-purple-300': subType !== intersectedSubtype,
+                      'hover:bg-orange-200': subType !== intersectedSubtype,
                     })}
                   >
                     {subType}
