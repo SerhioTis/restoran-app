@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import { useOrderStore } from '@/stores/useOrderStore';
 
-export function ProductModal() {
+export const ProductModal = () => {
   const isProductsModalOpen = useOrderStore(
     (state) => state.isProductsModalOpen,
   );
@@ -25,17 +25,18 @@ export function ProductModal() {
     <Dialog open={isProductsModalOpen} onOpenChange={setIsProductsModalOpen}>
       <DialogContent className="!max-w-[70%]">
         <DialogHeader>
-          <DialogTitle>Products</DialogTitle>
+          <DialogTitle>Замовлення</DialogTitle>
           <DialogDescription>
-            Here you can see list of products that is in this order
+            Тут ви можете побачити список продуктів, які включені в це
+            замовлення
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-8">
           {currentModalProducts.map((product) => (
-            <ProductCard key={product.id} product={product} showActions />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </DialogContent>
     </Dialog>
   );
-}
+};

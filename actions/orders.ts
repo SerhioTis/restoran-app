@@ -72,12 +72,16 @@ export async function createOrderWithProducts(
     ]);
     const orderId = orderRes.rows[0].id;
 
-    for (let productId of productIds) {
-      await client.query(CREATE_ORDER_PRODUCTS_RELATION_QUERY, [
-        orderId,
-        productId,
-      ]);
-    }
+    await Promise.all(
+      productIds
+        .filter((value, index, array) => array.indexOf(value) === index)
+        .map(async (productId) => {
+          await client.query(CREATE_ORDER_PRODUCTS_RELATION_QUERY, [
+            orderId,
+            productId,
+          ]);
+        }),
+    );
 
     await client.query('COMMIT');
   } catch (error) {

@@ -53,15 +53,17 @@ export default function Page() {
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <Image
-          width={160}
-          height={120}
-          src="/logo.png"
-          alt="logo"
-          className="m-auto rounded-sm object-cover object-center"
-        />
+        <Link href="/">
+          <Image
+            width={160}
+            height={120}
+            src="/logo.png"
+            alt="logo"
+            className="m-auto rounded-sm object-cover object-center"
+          />
+        </Link>
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Sign in to your account
+          Створіть свій акаунт
         </h2>
       </div>
 
@@ -72,7 +74,7 @@ export default function Page() {
               htmlFor="name"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              Name
+              Повне ім&apos;я
             </label>
             <div className="mt-2">
               <Input
@@ -80,7 +82,7 @@ export default function Page() {
                 name="name"
                 type="text"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6"
                 onChange={(e) =>
                   setData((prev) => ({ ...prev, name: e.target.value }))
                 }
@@ -93,7 +95,7 @@ export default function Page() {
               htmlFor="email"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              Email address
+              Пошта
             </label>
             <div className="mt-2">
               <Input
@@ -102,7 +104,7 @@ export default function Page() {
                 type="email"
                 autoComplete="email"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6"
                 onChange={(e) =>
                   setData((prev) => ({ ...prev, email: e.target.value }))
                 }
@@ -116,7 +118,7 @@ export default function Page() {
                 htmlFor="password"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Password
+                Пароль
               </label>
             </div>
             <div className="mt-2">
@@ -126,7 +128,7 @@ export default function Page() {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-600 sm:text-sm sm:leading-6"
                 onChange={(e) =>
                   setData((prev) => ({ ...prev, password: e.target.value }))
                 }
@@ -137,15 +139,15 @@ export default function Page() {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
             >
-              Sign up
+              Підтвердити
             </button>
           </div>
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          <Link href="/sign-in">Already have an account?</Link>
+          <Link href="/sign-in">Вже маєте акаунт?</Link>
         </p>
       </div>
     </div>

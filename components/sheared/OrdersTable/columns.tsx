@@ -11,11 +11,11 @@ export const columns: ColumnDef<Order>[] = [
   },
   {
     accessorKey: 'status',
-    header: 'Status',
+    header: 'Статус',
   },
   {
     accessorKey: 'totalCost',
-    header: 'Total Cost',
+    header: 'Загальна Сума',
     cell: ({ getValue }) => {
       const amount = Number.parseFloat(getValue<string>());
 
@@ -29,19 +29,19 @@ export const columns: ColumnDef<Order>[] = [
   },
   {
     accessorKey: 'totalProducts',
-    header: 'Total products',
+    header: 'Кількість продуктів',
   },
   {
     accessorKey: 'comment',
-    header: 'Comment',
+    header: 'Коментар',
   },
   {
     accessorKey: 'createdAt',
-    header: 'Created at',
+    header: 'Час замовлення',
     cell: ({ getValue }) => {
-      const date = getValue() as Date;
+      const date = getValue<Date>();
 
-      return date.toLocaleDateString();
+      return date.toISOString();
     },
   },
   {

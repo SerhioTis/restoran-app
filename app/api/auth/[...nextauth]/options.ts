@@ -14,15 +14,15 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV !== 'production',
   callbacks: {
-    session: async (session) => {
-      if (session?.session?.user?.email) {
+    session: async ({ session }) => {
+      if (session?.user?.email) {
         const userData = await getUserByEmail({
-          email: session.session.user.email,
+          email: session.user.email,
         });
-        session.session.user.id = userData.id;
+        session.user.id = userData.id;
       }
 
-      return session?.session;
+      return session;
     },
   },
   providers: [

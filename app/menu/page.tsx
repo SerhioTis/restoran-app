@@ -30,7 +30,7 @@ export default async function Page({ searchParams }: PageProps) {
   const parsedProductSubTypes = groupProductSubtypesListByType(productSubTypes);
 
   return (
-    <main className="mx-auto grid max-w-3xl grid-cols-3">
+    <main className="mx-auto grid max-w-3xl grid-cols-3 gap-10">
       <NavBar productSubTypes={parsedProductSubTypes} />
 
       <GroupedProductsList productList={parsedProductList} />

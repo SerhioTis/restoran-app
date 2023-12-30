@@ -155,7 +155,7 @@ export function OrdersTable({ orders }: Props) {
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Попердня
           </Button>
           <Button
             variant="outline"
@@ -163,7 +163,7 @@ export function OrdersTable({ orders }: Props) {
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Наступна
           </Button>
         </div>
       </div>

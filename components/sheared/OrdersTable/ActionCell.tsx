@@ -52,13 +52,13 @@ export default function ActionCell({ role, products, orderId }: Props) {
         <DropdownMenuContent align="end">
           {isCustomer && (
             <>
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuLabel>Опції</DropdownMenuLabel>
               <DropdownMenuItem onClick={handleViewProducts}>
-                View products
+                Переглянути замовлення
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => handleDeclineOrder()}>
-                <span className="text-destructive">Decline</span>
+                <span className="text-destructive">Відмінити</span>
               </DropdownMenuItem>
             </>
           )}
